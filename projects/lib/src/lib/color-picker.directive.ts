@@ -12,13 +12,13 @@ import { AlphaChannel, ColorMode, OutputFormat } from './helpers';
   exportAs: 'ngxColorPicker'
 })
 export class ColorPickerDirective implements OnChanges, OnDestroy {
-  private dialog: any;
+  protected dialog: any;
 
-  private dialogCreated: boolean = false;
-  private ignoreChanges: boolean = false;
+  protected dialogCreated: boolean = false;
+  protected ignoreChanges: boolean = false;
 
-  private cmpRef: ComponentRef<ColorPickerComponent>;
-  private viewAttachedToAppRef: boolean = false;
+  protected cmpRef: ComponentRef<ColorPickerComponent>;
+  protected viewAttachedToAppRef: boolean = false;
 
   @Input() colorPicker: string;
 
@@ -105,9 +105,9 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     this.inputChange(event);
   }
 
-  constructor(private injector: Injector, private cfr: ComponentFactoryResolver,
-    private appRef: ApplicationRef, private vcRef: ViewContainerRef, private elRef: ElementRef,
-    private _service: ColorPickerService) {}
+  constructor(protected injector: Injector, protected cfr: ComponentFactoryResolver,
+    protected appRef: ApplicationRef, protected vcRef: ViewContainerRef, protected elRef: ElementRef,
+    protected _service: ColorPickerService) {}
 
   ngOnDestroy(): void {
     if (this.cmpRef != null) {
